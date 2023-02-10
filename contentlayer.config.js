@@ -4,6 +4,11 @@ import rehypePrettyCode from "rehype-pretty-code"
 import rehypeSlug from "rehype-slug"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 
+import { remarkCodeHike } from "@code-hike/mdx"
+import { createRequire } from "module"
+const require = createRequire(import.meta.url)
+const theme = require("shiki/themes/nord.json")
+
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
   slug: {
@@ -145,7 +150,7 @@ export default makeSource({
   contentDirPath: "./content",
   documentTypes: [Page, Doc, Guide, Post, Author],
   mdx: {
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: [[remarkGfm], [remarkCodeHike, { theme }]],
     rehypePlugins: [
       rehypeSlug,
       [
