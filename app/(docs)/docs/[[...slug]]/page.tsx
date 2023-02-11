@@ -1,4 +1,5 @@
 import "@code-hike/mdx/dist/index.css"
+import "styles/custom-ch.css"
 
 import { notFound } from "next/navigation"
 import { allDocs } from "contentlayer/generated"
